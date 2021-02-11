@@ -4,6 +4,5 @@ class Turn
   end
 
   def has_won?(secret_code, @turn_input)
-    
   end
 end

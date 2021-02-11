@@ -12,5 +12,4 @@ class CodeGeneratorTest < Minitest::Test
     code = CodeGenerator.new
     assert_equal 4, code.secret_code.length
   end
-
 end
