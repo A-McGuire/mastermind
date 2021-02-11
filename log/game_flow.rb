@@ -1,6 +1,6 @@
 require './log/menu'
 require './log/code_generator'
-
+require './log/turn'
 
 class GameFlow
   def initialize(secret_code)
@@ -17,17 +17,30 @@ class GameFlow
     puts "What's your guess?"
   end
 
-  def game_end
-    end_credits if turn.has_won == true
-  end
+  # def game_end
+  #   end_credits if turn.has_won == true
+  # end
 
   def end_credits
-    puts "Congratulations! You guessed the sequence '#{code}' in #{num_guesses}"
-    puts "guesses over #{time} minutes"
-    puts "#{time_seconds} seconds."
+    # puts "Congratulations! You guessed the sequence '#{code}' in #{num_guesses}"
+    # puts "guesses over #{time} minutes"
+    # puts "#{time_seconds} seconds."
 
     "Do you want to (p)lay again or (q)uit?"
-    
+    end_credits_input = gets.chomp
+    if instructions_input == "p"
+      puts "Play Game"
+    elsif instructions_input == "q"
+      puts "Goodbye"
+      exit
+    else
+      puts "Invalid input!"
+  end
+
+  def game_runner
+    while turn.has_won? == false || turn.user_input == "q"
+      
+    end
   end
 end
 # run code gen method
