@@ -28,12 +28,14 @@ class Menu
       if instructions_input == "p"
         puts "Play Game"
       elsif instructions_input == "q"
-        puts "quit"
+        puts "Goodbye"
+        exit
       else
         puts "Invalid input!"
       end
     elsif input == "q"
-      puts "quit"
+      puts "Goodbye"
+      exit
     else
       puts "Invalid input!"
     end
