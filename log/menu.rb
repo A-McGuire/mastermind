@@ -6,14 +6,15 @@ class Menu
   end
 
   def receive_input
-    @input = gets.chomp
-    menu_options
+    menu_options(gets.chomp)
   end
 
-  def menu_options
-    if @input == "p"
+  def menu_options(input)
+    if input == "p"
       puts "Play Game"
-    elsif @input == "i"
+  game_branch
+    elsif input == "i"
+
       puts "Hello, I am the Codemaker. I will create a secret code with four"
       puts  "colored 'pegs' (r)ed, (g)reen, (b)lue, and (y)ellow."
       puts  "Your task is to correctly guess my secret code. The pegs will be"
@@ -25,38 +26,24 @@ class Menu
       puts  "you, however I will not tell you *which* slot is correct."
       puts  "Welcome to MASTERMIND. Good Luck."
       puts  "Would you like to (p)lay a game or will you (q)uit?"
-      input = gets.chomp
-      if input == "p"
+   game_branch
+      instructions_input = gets.chomp
+      if instructions_input == "p"
         puts "Play Game"
-      elsif input == "q"
-        puts "quit"
+      elsif instructions_input == "q"
+        puts "Goodbye"
+        exit
       else
         puts "Invalid input!"
       end
-    elsif @input == "q"
-      puts "quit"
+    elsif input == "q"
+      puts "Goodbye"
+      exit
     else
       puts "Invalid input!"
     end
   end
 end
-
-# Refactor
-# def receive_input
-#   menu_options(gets.chomp)
-# end
-#
-# def menu_options(input)
-#   if input == "p"
-#     puts "Play Game"
-#   elsif input == "i"
-#     puts "instructions"
-#   elsif input == "q"
-#     puts "quit"
-#   else
-#     puts "Invalid input!"
-#   end
-# end
 
 
 # include game_flow
