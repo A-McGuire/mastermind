@@ -12,7 +12,9 @@ class Menu
   def menu_options(input)
     if input == "p"
       puts "Play Game"
+  game_branch
     elsif input == "i"
+
       puts "Hello, I am the Codemaker. I will create a secret code with four"
       puts  "colored 'pegs' (r)ed, (g)reen, (b)lue, and (y)ellow."
       puts  "Your task is to correctly guess my secret code. The pegs will be"
@@ -24,6 +26,7 @@ class Menu
       puts  "you, however I will not tell you *which* slot is correct."
       puts  "Welcome to MASTERMIND. Good Luck."
       puts  "Would you like to (p)lay a game or will you (q)uit?"
+   game_branch
       instructions_input = gets.chomp
       if instructions_input == "p"
         puts "Play Game"
