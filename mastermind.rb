@@ -7,3 +7,4 @@ menu.intro
 menu.receive_input
 game.test_secret_code
 game.game_intro
+game.game_runner

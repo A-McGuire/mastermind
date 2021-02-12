@@ -1,8 +1,11 @@
 require './log/menu'
 require './log/code_generator'
 require './log/turn'
+require './log/evaluator'
 
 class GameFlow
+
+  attr_reader :secret_code
   def initialize(secret_code)
     @secret_code = secret_code
   end
@@ -17,32 +20,40 @@ class GameFlow
     puts "What's your guess?"
   end
 
+
+
+  def game_runner
+    while evaluator.has_won? == false || turn.user_input == "q"
+      Turn.new
+    end
+  end
+
   # def game_end
   #   end_credits if turn.has_won == true
   # end
 
-  def end_credits
-    # puts "Congratulations! You guessed the sequence '#{code}' in #{num_guesses}"
-    # puts "guesses over #{time} minutes"
-    # puts "#{time_seconds} seconds."
+#   def end_credits
+#     # puts "Congratulations! You guessed the sequence '#{code}' in #{num_guesses}"
+#     # puts "guesses over #{time} minutes"
+#     # puts "#{time_seconds} seconds."
+#
+#     "Do you want to (p)lay again or (q)uit?"
+#     end_credits_input = gets.chomp
+#     if instructions_input == "p"
+#       puts "Play Game"
+#     elsif instructions_input == "q"
+#       puts "Goodbye"
+#       exit
+#     else
+#       puts "Invalid input!"
+#   end
+# end
 
-    "Do you want to (p)lay again or (q)uit?"
-    end_credits_input = gets.chomp
-    if instructions_input == "p"
-      puts "Play Game"
-    elsif instructions_input == "q"
-      puts "Goodbye"
-      exit
-    else
-      puts "Invalid input!"
-  end
 
-  def game_runner
-    while turn.has_won? == false || turn.user_input == "q"
-      
-    end
-  end
-end
+
+
+
+
 # run code gen method
 # "I have generated a beginner sequence with four elements made up of: (r)ed,
 # (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
