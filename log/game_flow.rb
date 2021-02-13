@@ -22,11 +22,12 @@ class GameFlow
 
 
 
-  def game_runner
-    while evaluator.has_won? == false || turn.user_input == "q"
-      Turn.new
-    end
-  end
+  # def game_runner
+  #   while evaluator.has_won? == false || turn.user_input == "q"
+  #     turn = Turn.new
+  #   end
+  # end
+end
 
   # def game_end
   #   end_credits if turn.has_won == true
