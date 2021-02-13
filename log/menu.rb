@@ -11,7 +11,11 @@ class Menu
 
   def menu_options(input)
     if input == "p"
-      puts "Play Game"
+      code = CodeGenerator.new
+      game = GameFlow.new(code.secret_code)
+      game.test_secret_code
+      game.game_intro
+
     elsif input == "i"
 
       puts "Hello, I am the Codemaker. I will create a secret code with four"
@@ -25,7 +29,7 @@ class Menu
       puts  "you, however I will not tell you *which* slot is correct."
       puts  "Welcome to MASTERMIND. Good Luck."
       puts  "Would you like to (p)lay a game or will you (q)uit?"
-      
+
       instructions_input = gets.chomp
       if instructions_input == "p"
         puts "Play Game"

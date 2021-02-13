@@ -18,37 +18,43 @@ class GameFlow
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,"
     puts "(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
     puts "What's your guess?"
+
+    game_runner
+    p "out of loop"
   end
 
+  def winner?
+    return false if defined?(@turn) == nil
+    true if @evaluator.has_won? == true
+  end
 
-
-  # def game_runner
-  #   while evaluator.has_won? == false || turn.user_input == "q"
-  #     turn = Turn.new
-  #   end
-  # end
+  def game_runner
+    while winner? == false || @turn.turn_input == "q"
+      @turn = Turn.new
+      @turn.user_input
+      @evaluator = Evaluator.new(self, @turn.turn_input)
+      @evaluator.guess_hint
+    end
+  end
 end
 
-  # def game_end
-  #   end_credits if turn.has_won == true
+
+  # def end_credits
+  #   puts "Congratulations! You guessed the sequence '#{code}' in #{num_guesses}"
+  #   puts "guesses over #{time} minutes"
+  #   puts "#{time_seconds} seconds."
+  #
+  #   "Do you want to (p)lay again or (q)uit?"
+  #   end_credits_input = gets.chomp
+  #   if instructions_input == "p"
+  #     puts "Play Game"
+  #   elsif instructions_input == "q"
+  #     puts "Goodbye"
+  #     exit
+  #   else
+  #     puts "Invalid input!"
   # end
 
-#   def end_credits
-#     # puts "Congratulations! You guessed the sequence '#{code}' in #{num_guesses}"
-#     # puts "guesses over #{time} minutes"
-#     # puts "#{time_seconds} seconds."
-#
-#     "Do you want to (p)lay again or (q)uit?"
-#     end_credits_input = gets.chomp
-#     if instructions_input == "p"
-#       puts "Play Game"
-#     elsif instructions_input == "q"
-#       puts "Goodbye"
-#       exit
-#     else
-#       puts "Invalid input!"
-#   end
-# end
 
 
 
