@@ -13,7 +13,7 @@ class Evaluator
   end
 
   def has_won?
-      guess == @game_instance.secret_code
+      guess == @game_instance.secret_code # todo refactor with helper methods 
   end
 
   def check_color

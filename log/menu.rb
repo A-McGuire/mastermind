@@ -1,4 +1,4 @@
-# require './log/game_flow'
+# todo imput edgecases
 class Menu
   def intro
     puts "Welcome to MASTERMIND"
@@ -32,7 +32,7 @@ class Menu
 
       instructions_input = gets.chomp
       if instructions_input == "p"
-        puts "Play Game"
+        puts "Play Game" #todo Make it work
       elsif instructions_input == "q"
         puts "Goodbye"
         exit
@@ -47,18 +47,3 @@ class Menu
     end
   end
 end
-
-
-# include game_flow
-# puts "Welcome to MASTERMIND"
-#
-# puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-
-# recieve player input gets.chomp
-# play method - command
-  # game.start_method  begins the game
-# instructions method - query
-  # returns instructions on how to play the game
-# quit method - command   hard code 'exit' to close program
-
-#rename to menu
