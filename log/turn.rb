@@ -18,5 +18,8 @@ class Turn
       p @secret_code.join.upcase
     end
     @turn_input = input.split("")
+    @turn_input.each do |peg|
+      peg.downcase
+    end
   end
 end

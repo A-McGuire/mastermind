@@ -75,29 +75,9 @@ class GameFlow
   end
 end
 
-# starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-# # time consuming operation
-# ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-# elapsed = ending - starting
-# elapsed # => 9.183449000120163 seconds
-
 # EDGE CASES:
-# "Guesses are case insensitive
 # If it’s 'q' or 'quit' then exit the game
 # If it’s 'c' or 'cheat' then print out the current secret code
+# If it's 'i' or 'instructions'
 # If it’s fewer than four letters, tell them it’s too short
 # If it’s longer than four letters, tell them it’s too long
-# If they guess the secret sequence, enter the end game flow below
-# Otherwise give them feedback on the guess like this:"
-#
-# # starting = Time.now
-# # time consuming operation
-# ending = Time.now
-# elapsed = ending - starting
-# elapsed # => 10.822178
-
-# starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-# # time consuming operation
-# ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-# elapsed = ending - starting
-# elapsed # => 9.183449000120163 seconds
