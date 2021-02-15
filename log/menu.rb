@@ -13,7 +13,6 @@ class Menu
     if input == "p"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
-      # game.test_secret_code
       game.game_intro
 
     elsif input == "i"
@@ -45,7 +44,6 @@ class Menu
     if instructions_input == "p"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
-      # game.test_secret_code
       game.game_intro
     elsif instructions_input == "q"
       puts "Goodbye"

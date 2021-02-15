@@ -8,6 +8,7 @@ class GameFlow
   attr_reader :secret_code
   def initialize(secret_code)
     @secret_code = secret_code
+    @turn_counter = 0
   end
 
   def test_secret_code
@@ -29,11 +30,12 @@ class GameFlow
     false
   end
 
-  def game_runner # todo implemetn game counter and time counter
+  def game_runner # todo implement game counter and time counter
     while winner? == false
       @turn = Turn.new(@secret_code)
       @turn.user_input
-      @evaluator = Evaluator.new(@secret_code, @turn.turn_input)
+      @turn_counter += 1
+      @evaluator = Evaluator.new(@secret_code, @turn.turn_input, @turn_counter)
       @evaluator.guess_hint
     end
   end
@@ -45,14 +47,16 @@ class GameFlow
   end
 
   def end_credits
-    puts "Congratulations! You guessed the sequence '#{@evaluator.guess}' in (todo num guesses)"
+    puts "Congratulations! You guessed the sequence '#{@evaluator.guess.join.upcase}' in #{@turn_counter}"
     puts "guesses over (todo time) minutes"
     puts "(todo time) seconds."
 
     puts "Do you want to (p)lay again or (q)uit?"
     end_credits_input = gets.chomp
     if end_credits_input == "p"
-      puts "Play Game" #todo make it work again
+      code = CodeGenerator.new
+      game = GameFlow.new(code.secret_code)
+      game.game_intro
     elsif end_credits_input == "q"
       puts "Goodbye"
       exit
@@ -63,29 +67,6 @@ class GameFlow
 end
 
 
-
-
-
-
-
-
-
-
-# run code gen method
-# "I have generated a beginner sequence with four elements made up of: (r)ed,
-# (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
-# What's your guess?"
-# until q or cheat or win condition is met
-# get user input gets.chomp
-# user input compare to code
-# check if user input has any matching colors
-  # check if user input is in correct place
-    # w/ correct color checking individual pegs
-      #has_won? - boolean if true => end_game
-# print feedback method - query
- # print feedback "'RRGB' has 3 of the correct elements with 2 in the correct positions. You've taken 1 guess"
-# add to guess counter
-# user input gets.chomp restarts loop
 
 # EDGE CASES:
 # "Guesses are case insensitive
