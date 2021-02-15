@@ -9,11 +9,11 @@ class Menu
     menu_options(gets.chomp)
   end
 
-  def menu_options(input)
+  def menu_options(input) # todo invalid inpput loop back
     if input == "p"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
-      game.test_secret_code
+      # game.test_secret_code
       game.game_intro
 
     elsif input == "i"
@@ -32,7 +32,10 @@ class Menu
 
       instructions_input = gets.chomp
       if instructions_input == "p"
-        puts "Play Game" #todo Make it work
+        code = CodeGenerator.new
+        game = GameFlow.new(code.secret_code)
+        # game.test_secret_code
+        game.game_intro
       elsif instructions_input == "q"
         puts "Goodbye"
         exit

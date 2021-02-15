@@ -20,7 +20,7 @@ class GameFlow
     puts "What's your guess?"
 
     game_runner
-    p "out of loop"
+    # p "out of loop"
     end_game
   end
 
