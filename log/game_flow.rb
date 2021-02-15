@@ -31,6 +31,7 @@ class GameFlow
   end
 
   def game_runner # todo implement game counter and time counter
+      @starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     while winner? == false
       @turn = Turn.new(@secret_code)
       @turn.user_input
@@ -47,9 +48,11 @@ class GameFlow
   end
 
   def end_credits
+    @ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    calculate_time
     puts "Congratulations! You guessed the sequence '#{@evaluator.guess.join.upcase}' in #{@turn_counter}"
-    puts "guesses over (todo time) minutes"
-    puts "(todo time) seconds."
+    puts "guesses over #{@minutes} minutes"
+    puts "#{@seconds} seconds."
 
     puts "Do you want to (p)lay again or (q)uit?"
     end_credits_input = gets.chomp
@@ -64,9 +67,19 @@ class GameFlow
       puts "Invalid input!"
     end
   end
+
+  def calculate_time
+    elapsed = @ending - @starting
+    @minutes = (elapsed/60).to_i
+    @seconds = (elapsed % 60).round
+  end
 end
 
-
+# starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+# # time consuming operation
+# ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+# elapsed = ending - starting
+# elapsed # => 9.183449000120163 seconds
 
 # EDGE CASES:
 # "Guesses are case insensitive
