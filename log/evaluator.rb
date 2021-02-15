@@ -3,8 +3,8 @@ require './log/turn'
 
 class Evaluator
 
-  def initialize(game_instance, guess) #todo use secret code as arg instead of game class
-    @game_instance = game_instance
+  def initialize(secret_code, guess)
+    @secret_code = secret_code
     @guess = guess
   end
 
@@ -13,16 +13,16 @@ class Evaluator
   end
 
   def has_won?
-      guess == @game_instance.secret_code # todo refactor with helper methods
+      guess == @secret_code
   end
 
-  def check_color #todo fix logic
-    big_guess = @game_instance.secret_code - guess
-    @game_instance.secret_code.uniq.length - big_guess.uniq.length
+  def check_color #todo change big_guess to anything else
+    big_guess = @secret_code - guess
+    @secret_code.uniq.length - big_guess.uniq.length
   end
 
   def check_position
-    pairs = @game_instance.secret_code.zip(guess)
+    pairs = @secret_code.zip(guess)
 
     pairs.count do |pair|
       pair[0] == pair[1]

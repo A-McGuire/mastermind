@@ -31,9 +31,9 @@ class GameFlow
 
   def game_runner # todo implemetn game counter and time counter
     while winner? == false
-      @turn = Turn.new
+      @turn = Turn.new(@secret_code)
       @turn.user_input
-      @evaluator = Evaluator.new(self, @turn.turn_input)
+      @evaluator = Evaluator.new(@secret_code, @turn.turn_input)
       @evaluator.guess_hint
     end
   end
