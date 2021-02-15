@@ -31,7 +31,11 @@ class Evaluator
 
   def guess_hint # todo format output to caps string
       # @game_instance.test_secret_code
+    if guess == ['c']
+      puts "Cheater!"
+    else
       puts "'#{guess}' has #{check_color} of the correct elements with"
       puts "#{check_position} in the correct positions."
+    end
   end
 end

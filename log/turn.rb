@@ -12,8 +12,10 @@ class Turn
   def user_input
     input = gets.chomp
     if input == "q"
-      puts "Goodbye :)"
+      puts "You lose ;)"
       exit
+    elsif input == "c"
+      p @secret_code
     end
     @turn_input = input.split("")
   end
