@@ -14,8 +14,8 @@ class Turn
     if input == "q"
       puts "You lose ;)"
       exit
-    elsif input == "c"
-      p @secret_code
+    elsif input == "c" #refactor cheat
+      p @secret_code.join.upcase
     end
     @turn_input = input.split("")
   end
