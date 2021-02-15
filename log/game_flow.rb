@@ -1,4 +1,4 @@
-require './log/menu'
+# require './log/menu' todo delete
 require './log/code_generator'
 require './log/turn'
 require './log/evaluator'
@@ -20,7 +20,6 @@ class GameFlow
     puts "What's your guess?"
 
     game_runner
-    # p "out of loop"
     end_game
   end
 
@@ -31,7 +30,7 @@ class GameFlow
   end
 
   def game_runner # todo implemetn game counter and time counter
-    while winner? == false #|| @turn.turn_input == "q" todo
+    while winner? == false
       @turn = Turn.new
       @turn.user_input
       @evaluator = Evaluator.new(self, @turn.turn_input)
