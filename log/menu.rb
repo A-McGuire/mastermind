@@ -1,8 +1,11 @@
-# todo input edgecases
+require './log/module_format'
 class Menu
+  include Format
+
   def intro
     puts "Welcome to MASTERMIND"
     puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    line_break
   end
 
   def receive_input
@@ -10,19 +13,20 @@ class Menu
   end
 
   def menu_options(input)
-    if input == "p"
+    if input == "p" || input == "play"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
       game.game_intro
 
-    elsif input == "i"
+    elsif input == "i" || input == "instructions"
       instructions
-    elsif input == "q"
+    elsif input == "q" || input == "quit"
       puts "Goodbye"
       exit
     else
       puts "Invalid input!"
       puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+      line_break
       receive_input
     end
   end
@@ -39,18 +43,20 @@ class Menu
     puts  "you, however I will not tell you *which* slot is correct."
     puts  "Welcome to MASTERMIND. Good Luck."
     puts  "Would you like to (p)lay a game or will you (q)uit?"
+    line_break
 
     instructions_input = gets.chomp
-    if instructions_input == "p"
+    if instructions_input == "p" || instructions_input == "play"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
       game.game_intro
-    elsif instructions_input == "q"
+    elsif instructions_input == "q" || instructions_input == "quit"
       puts "Goodbye"
       exit
     else
       puts "Invalid input!"
       puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+      line_break
       receive_input
     end
   end

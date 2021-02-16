@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './log/code_generator'
+require './log/module_format'
 
 class CodeGeneratorTest < Minitest::Test
   def test_it_exists

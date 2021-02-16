@@ -1,7 +1,9 @@
 require './log/game_flow'
 require './log/turn'
+require './log/module_format'
 
 class Evaluator
+  include Format
 
   def initialize(secret_code, guess, turn_counter)
     @secret_code = secret_code
@@ -31,16 +33,16 @@ class Evaluator
   end
 
   def guess_hint
-    if guess == ['c'] # todo refactor cheater
-      puts "Cheater!"
-    elsif @turn_counter == 1
+    if @turn_counter == 1
       puts "'#{guess.join.upcase}' has #{check_color} of the correct elements with"
       puts "#{check_position} in the correct positions."
       puts "You've taken #{@turn_counter} guess"
+      line_break
     else
       puts "'#{guess.join.upcase}' has #{check_color} of the correct elements with"
       puts "#{check_position} in the correct positions."
       puts "You've taken #{@turn_counter} guesses"
+      line_break
     end
   end
 end
