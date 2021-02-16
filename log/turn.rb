@@ -1,7 +1,9 @@
 require './log/evaluator'
 require './log/game_flow'
+require './log/module_format'
 
 class Turn
+  include Format
 
   attr_reader :turn_input
 
@@ -11,15 +13,32 @@ class Turn
 
   def user_input
     input = gets.chomp
-    if input == "q"
+    if input == "q" || input == "quit"
       puts "You lose ;)"
+      line_break
       exit
-    elsif input == "c" #refactor cheat
+    elsif input == "c" || input == "cheat"
       p @secret_code.join.upcase
-    end
-    @turn_input = input.split("")
-    @turn_input.each do |peg|
-      peg.downcase
+      p "Cheater!"
+      line_break
+      user_input
+    elsif input.length == 4
+      @turn_input = input.split("")
+      @turn_input.each do |peg|
+        peg.downcase
+      end
+    elsif input.length > 4
+      p "Too many characters"
+      line_break
+      user_input
+    elsif input.length < 4
+      p "Not enough characters"
+      line_break
+      user_input
+    else
+      "Invalid Input"
+      line_break
+      user_input
     end
   end
 end

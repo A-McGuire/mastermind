@@ -1,9 +1,10 @@
-# require './log/menu' todo delete
+require './log/module_format'
 require './log/code_generator'
 require './log/turn'
 require './log/evaluator'
 
 class GameFlow
+  include Format
 
   attr_reader :secret_code
   def initialize(secret_code)
@@ -19,6 +20,7 @@ class GameFlow
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,"
     puts "(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
     puts "What's your guess?"
+    line_break
 
     game_runner
     end_game
@@ -54,17 +56,20 @@ class GameFlow
     puts "guesses over #{@minutes} minutes"
     puts "#{@seconds} seconds."
 
+    line_break
+
     puts "Do you want to (p)lay again or (q)uit?"
     end_credits_input = gets.chomp
-    if end_credits_input == "p"
+    if end_credits_input == "p" || end_credits_input == "play"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
       game.game_intro
-    elsif end_credits_input == "q"
+    elsif end_credits_input == "q" || end_credits_input == "quit"
       puts "Goodbye"
       exit
     else
       puts "Invalid input!"
+      line_break
     end
   end
 
@@ -74,10 +79,3 @@ class GameFlow
     @seconds = (elapsed % 60).round
   end
 end
-
-# EDGE CASES:
-# If it’s 'q' or 'quit' then exit the game
-# If it’s 'c' or 'cheat' then print out the current secret code
-# If it's 'i' or 'instructions'
-# If it’s fewer than four letters, tell them it’s too short
-# If it’s longer than four letters, tell them it’s too long
