@@ -20,8 +20,8 @@ class GameFlow
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,"
     puts "(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
     puts "What's your guess?"
-    line_break
 
+    line_break
     game_runner
     end_game
   end
@@ -51,7 +51,9 @@ class GameFlow
 
   def end_credits
     @ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+
     calculate_time
+
     puts "Congratulations! You guessed the sequence '#{@evaluator.guess.join.upcase}' in #{@turn_counter}"
     puts "guesses over #{@minutes} minutes"
     puts "#{@seconds} seconds."
@@ -59,7 +61,9 @@ class GameFlow
     line_break
 
     puts "Do you want to (p)lay again or (q)uit?"
+
     end_credits_input = gets.chomp
+    
     if end_credits_input == "p" || end_credits_input == "play"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)
