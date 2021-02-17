@@ -12,10 +12,6 @@ class GameFlow
     @turn_counter = 0
   end
 
-  def test_secret_code
-    p @secret_code
-  end
-
   def game_intro
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,"
     puts "(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
@@ -24,12 +20,6 @@ class GameFlow
     line_break
     game_runner
     end_game
-  end
-
-  def winner?
-    return false if defined?(@turn) == nil
-    return true if @evaluator.has_won? == true
-    false
   end
 
   def game_runner
@@ -43,10 +33,14 @@ class GameFlow
     end
   end
 
+  def winner?
+    return false if defined?(@turn) == nil
+    return true if @evaluator.has_won? == true
+    false
+  end
+
   def end_game
     return end_credits if @evaluator.has_won? == true
-    menu.intro
-    menu.receive_input
   end
 
   def end_credits
@@ -63,7 +57,7 @@ class GameFlow
     puts "Do you want to (p)lay again or (q)uit?"
 
     end_credits_input = gets.chomp
-    
+
     if end_credits_input == "p" || end_credits_input == "play"
       code = CodeGenerator.new
       game = GameFlow.new(code.secret_code)

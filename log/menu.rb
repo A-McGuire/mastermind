@@ -6,6 +6,7 @@ class Menu
     puts "Welcome to MASTERMIND"
     puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
     line_break
+    receive_input
   end
 
   def receive_input

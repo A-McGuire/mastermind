@@ -5,4 +5,3 @@ require './log/turn'
 require './log/evaluator'
 menu = Menu.new
 menu.intro
-menu.receive_input
