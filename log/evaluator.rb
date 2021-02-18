@@ -1,6 +1,6 @@
+require './log/module_format'
 require './log/game_flow'
 require './log/turn'
-require './log/module_format'
 
 class Evaluator
   include Format

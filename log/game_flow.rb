@@ -24,6 +24,7 @@ class GameFlow
 
   def game_runner
       @starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+      
     while winner? == false
       @turn = Turn.new(@secret_code)
       @turn.user_input

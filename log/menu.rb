@@ -1,4 +1,5 @@
 require './log/module_format'
+
 class Menu
   include Format
 
