@@ -13,4 +13,11 @@ class GameFlowTest < Minitest::Test
 
     assert_instance_of GameFlow, game
   end
+
+  def test_turn_does_not_exist
+    code = CodeGenerator.new
+    game = GameFlow.new(code.secret_code)
+
+    assert_equal false, game.winner?
+  end
 end
